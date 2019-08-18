@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        #map {
+        	position:absolute;
+            width: 100%;
+            height: 100%;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/secciones_electorales_1.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[-34.69810553576965,-58.572082009670495],[-34.52886468424459,-58.203209550757705]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>');
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        var layer_GoogleMaps_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+            opacity: 1.0,
+            attribution: '',
+        });
+        layer_GoogleMaps_0;
+        map.addLayer(layer_GoogleMaps_0);
+        function pop_secciones_electorales_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['gid'] !== null ? Autolinker.link(String(feature.properties['gid'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['provincia'] !== null ? Autolinker.link(String(feature.properties['provincia'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['departamen'] !== null ? Autolinker.link(String(feature.properties['departamen'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['cabecera'] !== null ? Autolinker.link(String(feature.properties['cabecera'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id_dpto'] !== null ? Autolinker.link(String(feature.properties['id_dpto'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id_pcia'] !== null ? Autolinker.link(String(feature.properties['id_pcia'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['caba_votos_hor_FRENTE DE TODOS'] !== null ? Autolinker.link(String(feature.properties['caba_votos_hor_FRENTE DE TODOS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['caba_votos_hor_JUNTOS POR EL CAMBIO'] !== null ? Autolinker.link(String(feature.properties['caba_votos_hor_JUNTOS POR EL CAMBIO'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['caba_votos_hor_dif'] !== null ? Autolinker.link(String(feature.properties['caba_votos_hor_dif'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_secciones_electorales_1_0(feature) {
+            if (feature.properties['caba_votos_hor_JUNTOS POR EL CAMBIO'] >= 0.000000 && feature.properties['caba_votos_hor_JUNTOS POR EL CAMBIO'] <= 46957.200000 ) {
+                return {
+                pane: 'pane_secciones_electorales_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,247,0,0.0)',
+            }
+            }
+            if (feature.properties['caba_votos_hor_JUNTOS POR EL CAMBIO'] >= 46957.200000 && feature.properties['caba_votos_hor_JUNTOS POR EL CAMBIO'] <= 49602.000000 ) {
+                return {
+                pane: 'pane_secciones_electorales_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,247,0,0.25098039215686274)',
+            }
+            }
+            if (feature.properties['caba_votos_hor_JUNTOS POR EL CAMBIO'] >= 49602.000000 && feature.properties['caba_votos_hor_JUNTOS POR EL CAMBIO'] <= 56120.800000 ) {
+                return {
+                pane: 'pane_secciones_electorales_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,247,0,0.5019607843137255)',
+            }
+            }
+            if (feature.properties['caba_votos_hor_JUNTOS POR EL CAMBIO'] >= 56120.800000 && feature.properties['caba_votos_hor_JUNTOS POR EL CAMBIO'] <= 66226.800000 ) {
+                return {
+                pane: 'pane_secciones_electorales_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,247,0,0.7490196078431373)',
+            }
+            }
+            if (feature.properties['caba_votos_hor_JUNTOS POR EL CAMBIO'] >= 66226.800000 && feature.properties['caba_votos_hor_JUNTOS POR EL CAMBIO'] <= 97275.000000 ) {
+                return {
+                pane: 'pane_secciones_electorales_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,247,0,1.0)',
+            }
+            }
+        }
+        map.createPane('pane_secciones_electorales_1');
+        map.getPane('pane_secciones_electorales_1').style.zIndex = 401;
+        map.getPane('pane_secciones_electorales_1').style['mix-blend-mode'] = 'normal';
+        var layer_secciones_electorales_1 = new L.geoJson(json_secciones_electorales_1, {
+            attribution: '',
+            pane: 'pane_secciones_electorales_1',
+            onEachFeature: pop_secciones_electorales_1,
+            style: style_secciones_electorales_1_0,
+        });
+        bounds_group.addLayer(layer_secciones_electorales_1);
+        map.addLayer(layer_secciones_electorales_1);
+        setBounds();
+        var i = 0;
+        layer_secciones_electorales_1.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['departamen'] !== null?String('<div style="color: #444444; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['departamen']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_secciones_electorales_1'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_seccioneselectorales_1]);
+        map.on("zoomend", function(){
+            resetLabels([layer_seccioneselectorales_1]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_seccioneselectorales_1]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_seccioneselectorales_1]);
+        });
+        </script>
+    </body>
+</html>
